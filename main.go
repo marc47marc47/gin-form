@@ -44,8 +44,9 @@ func main() {
 			StreetAddress: []string{"3F., No.7, Ln. 116, Guangfu S. Rd."},
 			PostalCode:    []string{"106451"},
 		},
-		NotBefore:    time.Now(),
-		NotAfter:     time.Now().AddDate(10, 0, 0),
+		NotBefore: time.Now(),
+		//AddDate(YEAR, MONTH, DAY)
+		NotAfter:     time.Now().AddDate(20, 12, 365),
 		SubjectKeyId: []byte{1, 2, 3, 4, 6},
 		ExtKeyUsage:  []x509.ExtKeyUsage{x509.ExtKeyUsageClientAuth, x509.ExtKeyUsageServerAuth},
 		KeyUsage:     x509.KeyUsageDigitalSignature,
@@ -71,5 +72,4 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	//router.Run(":8000")
 }
