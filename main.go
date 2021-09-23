@@ -19,6 +19,7 @@ import (
 func main() {
 	router := gin.Default()
 	router.LoadHTMLGlob("templates/*.html")
+	router.Use(static.Serve("/images", static.LocalFile("./images", false)))
 	router.Use(static.Serve("/styles", static.LocalFile("./styles", false)))
 	router.Use(static.Serve("/jqwidgets", static.LocalFile("./jqwidgets", false)))
 	router.Use(static.Serve("/scripts", static.LocalFile("./scripts", false)))
