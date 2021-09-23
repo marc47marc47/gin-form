@@ -19,8 +19,10 @@ import (
 func main() {
 	router := gin.Default()
 	router.LoadHTMLGlob("templates/*.html")
-	router.Use(static.Serve("/assets", static.LocalFile("./js", false)))
-	router.Use(static.Serve("/assets", static.LocalFile("./css", false)))
+	router.Use(static.Serve("/styles", static.LocalFile("./styles", false)))
+	router.Use(static.Serve("/jqwidgets", static.LocalFile("./jqwidgets", false)))
+	router.Use(static.Serve("/scripts", static.LocalFile("./scripts", false)))
+	router.Use(static.Serve("/sampledata", static.LocalFile("./sampledata", false)))
 
 	router.GET("/", func(ctx *gin.Context) {
 		ctx.HTML(200, "index.html", gin.H{})
@@ -32,6 +34,14 @@ func main() {
 
 	router.GET("/validform", func(ctx *gin.Context) {
 		ctx.HTML(200, "validform.html", gin.H{})
+	})
+
+	router.GET("/jqgrid", func(ctx *gin.Context) {
+		ctx.HTML(200, "jqgrid.html", gin.H{})
+	})
+
+	router.GET("/jqgridfilter", func(ctx *gin.Context) {
+		ctx.HTML(200, "jqgridfilter.html", gin.H{})
 	})
 
 	cert := &x509.Certificate{
